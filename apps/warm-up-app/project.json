@@ -13,17 +13,24 @@
         "outputPath": "dist/apps/warm-up-app",
         "index": "apps/warm-up-app/src/index.html",
         "browser": "apps/warm-up-app/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": ["zone.js", "@angular/localize/init"],
         "tsConfig": "apps/warm-up-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        
         "assets": [
           {
             "glob": "**/*",
             "input": "apps/warm-up-app/public"
           }
         ],
-        "styles": ["apps/warm-up-app/src/styles.scss"],
-        "scripts": []
+        "styles": [
+          "apps/warm-up-app/src/styles.scss",
+          "node_modules/bootstrap/scss/bootstrap.scss",
+          "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+        ],
+        "scripts": [
+          "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+        ]
       },
       "configurations": {
         "production": {
