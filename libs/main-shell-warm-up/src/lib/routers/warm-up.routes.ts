@@ -6,12 +6,14 @@ export const warmUpRoutes: Route[] = [
         path:'',
 
         component: MainShellWarmUpComponent,
+        providers:[
+        ], 
 
        children:[
         {
             path:'product-spa-router-base',
 
-            loadChildren: ()=> import('@ng-hackathon-monorepo/products').then(p => p.ProductsComponent)
+            loadComponent: ()=> import('@ng-hackathon-monorepo/products').then(p => p.ProductsComponent)
 
         }
        ]
