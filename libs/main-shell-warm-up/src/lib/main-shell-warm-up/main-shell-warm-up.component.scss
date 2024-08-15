@@ -1,0 +1,43 @@
+:host{
+    .main-shell-warm-up {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+        .main-shell-header {
+          height: 100px;
+          background-color: #c3c3c3;
+          display: flex;
+          justify-content: center;
+          position: fixed;
+          width: 100vw;
+          top: 0;
+          z-index: 2;
+        }
+        .main-shell-container{
+          display: flex;
+          .main-shell-sider-bar {
+            min-width: 300px;
+            width: 300px;
+            min-height: calc(100vh - 100px);
+            height: calc(100vh - 100px);
+            background-color: #e5e5e5;
+            position: fixed;
+            top: 100px;
+            flex: 0 0 300px;
+            z-index: 2;
+            overflow: auto;
+          }
+          .main-shell-content {
+            display: flex;
+            position: absolute;
+            top: 100px;
+            left: 300px;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+          }
+        }
+      }
+      
+}
