@@ -12,16 +12,16 @@
     <div class="main-shell-container">
   
       <div class="main-shell-sider-bar">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-              The current link item
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-            <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
-          </div>
-      </div>
+        <ul class="list-group">
+          
+
+            <a href="#" class="list-group-item list-group-item-action " [routerLinkActive]="['active']" [routerLink]="['/product-spa-router-base']">
+                The current link item
+              </a>
+              <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="['active']" [routerLink]="['/product-spa-router-base-1']" >A second link item</a>
+              <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="['active']" [routerLink]="['/product-spa-router-base-2']">A third link item</a>
+        </ul>
+        </div>
       <div class="main-shell-content">  
             <router-outlet />
       </div>

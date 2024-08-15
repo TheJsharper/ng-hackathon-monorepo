@@ -1,43 +1,38 @@
 :host{
-    .main-shell-warm-up {
+    .main-shell-warm-up{
         display: flex;
         flex-direction: column;
-        width: 100%;
-        min-height: 100vh;
+        position: relative;
         .main-shell-header {
-          height: 100px;
-          background-color: #c3c3c3;
           display: flex;
-          justify-content: flex-start;
-          position: fixed;
-          width: 100vw;
-          top: 0;
-          z-index: 2;
+          flex: 0 0 100px;
+          background-color: #f33;
+          position: sticky;
+          top: 0px;
+          justify-content: center;
         }
-        .main-shell-container{
+        .main-shell-container {
           display: flex;
-          .main-shell-sider-bar {
-            min-width: 300px;
-            width: 300px;
-            min-height: calc(100vh - 100px);
-            height: calc(100vh - 100px);
-            background-color: #e5e5e5;
-            position: fixed;
-            top: 100px;
-            flex: 0 0 300px;
-            z-index: 2;
-            overflow: auto;
-          }
-          .main-shell-content {
+          flex: 0 0 calc(100dvh - 100px);
+          background-color: blue;
+          top: 100px;
+          overflow: hidden;
+          .main-shell-sider-bar{
             display: flex;
-            position: absolute;
-            top: 100px;
-            left: 300px;
             flex-direction: column;
-            gap: 10px;
-            justify-content: center;
+            flex: 0 0 300px;
+            background-color: #fff;
+            overflow: auto;
+         
+          }
+          .main-shell-content{
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 calc(100% - 300px);
+            background-color: #201100;
+            color: white;
+            overflow: auto;
           }
         }
       }
-      
 }
