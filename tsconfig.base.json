@@ -18,7 +18,11 @@
       "@ng-hackathon-monorepo/main-shell-warm-up": [
         "libs/main-shell-warm-up/src/index.ts"
       ],
-      "@ng-hackathon-monorepo/products": ["libs/products/src/index.ts"]
+      "@ng-hackathon-monorepo/products": ["libs/products/src/index.ts"],
+      "@ng-hackathon-monorepo/shared-services": [
+        "libs/shared-services/src/index.ts"
+      ],
+      "@ng-hackathon-monorepo/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
