@@ -4,6 +4,11 @@
     "esbenp.prettier-vscode",
     "firsttris.vscode-jest-runner",
     "ms-playwright.playwright",
-    "angular.ng-template"
+    "angular.ng-template",
+    "johnpapa.angular-essentials",
+    "cyrilletuzi.angular-schematics",
+    "johnpapa.angular2",
+    "dbaeumer.vscode-eslint",
+    "pkief.material-icon-theme"
   ]
 }
