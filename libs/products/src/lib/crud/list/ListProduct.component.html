@@ -1,1 +1,26 @@
-<p>List works!</p>,
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+
+      @for (item of products; track item.id) {
+        <tr>
+          <th scope="row">{{item.id}}</th>
+          <th scope="row">{{item.name}}</th>
+          <th scope="row">{{item.price}}</th>
+          <th scope="row">{{item.rating}}</th>
+          <th scope="row"> 
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/product-spa-router-base/update']" >Update</button>
+          </th>
+
+      }
+    
+    </tbody>
+  </table>
