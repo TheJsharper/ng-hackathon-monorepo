@@ -3,24 +3,28 @@ import { MainShellWarmUpComponent } from '../main-shell-warm-up/main-shell-warm-
 
 export const warmUpRoutes: Route[] = [
     {
-        path:'',
+        path: '',
 
         component: MainShellWarmUpComponent,
-        providers:[
-        ], 
+        providers: [
+        ],
 
-       children:[
-        {
-            path:'product-spa-router-base',
+        children: [
+            {
+                path: 'product-spa-router-base',
 
-            loadChildren: ()=> import('@ng-hackathon-monorepo/products').then(p => p.productRoutes)
+                loadChildren: () => import('@ng-hackathon-monorepo/products').then(p => p.productRoutes)
 
-        }
-       ]
+            }
+        ]
+    },
+    {
+        path: '',
+        redirectTo: 'product-spa-router-base/list', pathMatch: 'full'
     }
     ,
-            {
-                path:'',
-                redirectTo:'/product-spa-router-base' , pathMatch:'full'
-            }
+    {
+        path: '**',
+        redirectTo: 'product-spa-router-base/list', pathMatch: 'full'
+    }
 ];
