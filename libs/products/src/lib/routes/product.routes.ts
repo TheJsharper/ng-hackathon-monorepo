@@ -17,11 +17,10 @@ export const productRoutes: Route[] = [
                 path: 'update',
                 loadComponent: () => import('../crud/update/UpdateProduct.component').then(c => c.UpdateProductComponent)
             },
-            /*{
-                path:'',
-                redirectTo:'/list', pathMatch: 'full' 
-            }*/
-
+            {
+                path: '**',
+                redirectTo: 'list', pathMatch: 'full'
+            }
         ]
 
     }

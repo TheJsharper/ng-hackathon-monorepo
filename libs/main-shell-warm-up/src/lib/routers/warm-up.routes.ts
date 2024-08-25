@@ -20,7 +20,7 @@ export const warmUpRoutes: Route[] = [
     },
     {
         path: '',
-        redirectTo: 'product-spa-router-base/list', pathMatch: 'full'
+        redirectTo: 'product-spa-router-base/list', pathMatch: 'prefix'
     }
     ,
     {
