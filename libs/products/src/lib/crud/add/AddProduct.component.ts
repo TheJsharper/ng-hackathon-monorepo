@@ -17,7 +17,12 @@ export class AddProductComponent {
   form:FormGroup;
     constructor(private fb:FormBuilder){
       this.form = this.fb.group( {
-        name: new FormControl('')
+        name: new FormControl(''),
+        
+        description: new FormControl(''),
+        price: new FormControl(''),
+        quantity: new FormControl(''),
+        category: new FormControl(''),
       })
     }
 }

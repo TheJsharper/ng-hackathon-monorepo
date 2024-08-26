@@ -1,1 +1,22 @@
-<p> it works </p>
+<form [formGroup]="form">
+    <div class="mb-3 ">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder=" Placeholder" formControlName="name" >
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" placeholder="laceholder" formControlName="description"  >
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" id="price" placeholder="laceholder" formControlName="price" >
+      </div>
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="text" class="form-control" id="quantity" placeholder="laceholder"formControlName="quantity" >
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" id="category" placeholder="laceholder" formControlName="category" >
+      </div>
+</form>

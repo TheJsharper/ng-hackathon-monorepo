@@ -1,10 +1,13 @@
+<button type="button" class="btn btn-primary" (click)="add()">Add</button>
 <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Category</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -14,8 +17,10 @@
         <tr>
           <th scope="row">{{item.id}}</th>
           <th scope="row">{{item.name}}</th>
+          <th scope="row">{{item.description}}</th>
           <th scope="row">{{item.price}}</th>
-          <th scope="row">{{item.rating}}</th>
+          <th scope="row">{{item.quantity}}</th>
+          <th scope="row">{{item.category}}</th>
           <th scope="row"> 
             <button type="button" class="btn btn-outline-primary" [routerLink]="['/product-spa-router-base/update']" >Update</button>
           </th>

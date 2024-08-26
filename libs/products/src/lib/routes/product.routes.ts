@@ -18,6 +18,11 @@ export const productRoutes: Route[] = [
                 loadComponent: () => import('../crud/update/UpdateProduct.component').then(c => c.UpdateProductComponent)
             },
             {
+
+                path: 'add',
+                loadComponent: () => import('../crud/add/AddProduct.component').then(c => c.AddProductComponent)
+            },
+            {
                 path: '**',
                 redirectTo: 'list', pathMatch: 'full'
             }

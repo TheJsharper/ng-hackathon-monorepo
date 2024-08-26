@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ProductService } from '@ng-hackathon-monorepo/shared-services';
 import { Product } from '@ng-hackathon-monorepo/types';
 
@@ -18,5 +18,11 @@ import { Product } from '@ng-hackathon-monorepo/types';
 export class ListProductComponent { 
   private productService: ProductService = inject(ProductService);
 
-  products: Array<Product> = this.productService.getProductsData();;
+  private router : Router = inject(Router);
+  products: Array<Product> = this.productService.getProductsData();
+
+
+  add():void{
+    this.router.navigate(['/product-spa-router-base/add']);
+  }
 }
