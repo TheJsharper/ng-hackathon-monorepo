@@ -7,7 +7,7 @@ export class ProductMockApiService {
    
     products:Observable<Array<Product>> = of([
         {
-            id: '1000',
+            id: this.getNextId(),
             code: 'f230fh0g3',
             name: 'Bamboo Watch',
             description: 'Product Description',
@@ -19,7 +19,7 @@ export class ProductMockApiService {
             rating: 5
         },
         {
-            id: '1001',
+            id: this.getNextId(),
             code: 'nvklal433',
             name: 'Black Watch',
             description: 'Product Description',
@@ -42,9 +42,12 @@ export class ProductMockApiService {
 
     }
     
-    post(product:Product):Observable<Array<Product>>{
-     this.products = this.products.pipe(map((values)=>[...values, product]));
-     return this.products;   
+    post(product:Product):Observable<Product>{
+        const newProduct = {...product, id: this.getNextId()};
+     this.products = this.products.pipe(map((values)=>[...values, newProduct]));
+     return this.products.pipe(map((values)=>{
+        return values.find( p => p.id === newProduct.id)?? {}
+     }));   
     }
 
     put(id:string, product:Product):Observable<Array<Product>>{
@@ -63,6 +66,10 @@ export class ProductMockApiService {
             return [...others];
         }));
         return this.products;
+    }
+
+    private getNextId():string{
+        return Date.now().toString();
     }
     
 }
