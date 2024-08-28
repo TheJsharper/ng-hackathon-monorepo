@@ -17,9 +17,13 @@ import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
 export class AddProductComponent {
 
   form: FormGroup;
+
   private fb: FormBuilder = inject(FormBuilder);
+
   private  productServiceApiMocker: ProductMockApiService = inject(ProductMockApiService); 
+
   private router : Router = inject(Router);
+
   constructor() {
     this.form = this.fb.group({
       name: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -27,7 +31,7 @@ export class AddProductComponent {
       price: new FormControl(null,[Validators.required, Validators.min(2)]),
       quantity: new FormControl(null, [Validators.required]),
       category: new FormControl('',[Validators.required]),
-    })
+    });
   }
 
   save(): void {
