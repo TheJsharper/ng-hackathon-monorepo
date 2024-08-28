@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
 
@@ -10,7 +10,6 @@ import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
   imports: [
     CommonModule, ReactiveFormsModule
   ],
-  //providers:[ProductMockApiService],
   templateUrl: './AddProduct.component.html',
   styleUrl: './AddProduct.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,12 +22,11 @@ export class AddProductComponent {
   private router : Router = inject(Router);
   constructor() {
     this.form = this.fb.group({
-      name: new FormControl(''),
-
-      description: new FormControl(''),
-      price: new FormControl(''),
-      quantity: new FormControl(''),
-      category: new FormControl(''),
+      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      description: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      price: new FormControl(null,[Validators.required, Validators.min(2)]),
+      quantity: new FormControl(null, [Validators.required]),
+      category: new FormControl('',[Validators.required]),
     })
   }
 

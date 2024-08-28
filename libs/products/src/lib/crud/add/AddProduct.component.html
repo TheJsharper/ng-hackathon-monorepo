@@ -1,24 +1,29 @@
 <form [formGroup]="form">
     <div class="mb-3 ">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" placeholder=" Placeholder" formControlName="name" >
+        <input type="text" class="form-control" id="name" placeholder="Watch " formControlName="name" >
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description" placeholder="laceholder" formControlName="description"  >
+        <textarea  type="text" rows="5" class="form-control" id="description" placeholder="A Watch is water resistence" formControlName="description"  >
+        </textarea>
       </div>
-      <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input type="text" class="form-control" id="price" placeholder="laceholder" formControlName="price" >
+      <div class="d-flex ">
+        <div class="mb-3 left-margin" >
+          <label for="price" class="form-label">Price</label>
+          <input type="number" class="form-control" id="price" placeholder="420€" formControlName="price" >
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input type="number" class="form-control" id="quantity" placeholder="2" formControlName="quantity" >
+        </div>
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <input type="text" class="form-control" id="category" placeholder="laceholder" formControlName="category" >
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="quantity" class="form-label">Quantity</label>
-        <input type="text" class="form-control" id="quantity" placeholder="laceholder"formControlName="quantity" >
+      <div class="d-flex">
+        <button type="button" class="btn btn-light">Cancel</button>
+        <button type="button" class="btn btn-success" (click)="save()" >Save</button>
       </div>
-      <div class="mb-3">
-        <label for="category" class="form-label">Category</label>
-        <input type="text" class="form-control" id="category" placeholder="laceholder" formControlName="category" >
-      </div>
-      <button type="button" class="btn btn-light">Cancel</button>
-      <button type="button" class="btn btn-success" (click)="save()" >Save</button>
 </form>
