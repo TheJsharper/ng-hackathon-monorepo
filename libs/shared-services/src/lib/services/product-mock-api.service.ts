@@ -52,7 +52,7 @@ export class ProductMockApiService {
 
     put(id:string, product:Product):Observable<Array<Product>>{
      this.products = this.products.pipe(map((values)=>{
-        const others = values.filter((product)=> product !== id);
+        const others = values.filter((product)=> product.id !== id);
         return [...others, product];
     }));
 
@@ -69,7 +69,8 @@ export class ProductMockApiService {
     }
 
     private getNextId():string{
-        return Date.now().toString();
+        const random_number = Math.floor(Math.random() * 777) + 1;
+        return Date.now() +random_number .toString();
     }
     
 }

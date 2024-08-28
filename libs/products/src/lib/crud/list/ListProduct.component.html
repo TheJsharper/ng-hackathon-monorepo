@@ -22,7 +22,7 @@
           <th scope="row">{{item.quantity}}</th>
           <th scope="row">{{item.category}}</th>
           <th scope="row"> 
-            <button type="button" class="btn btn-outline-primary" [routerLink]="['/product-spa-router-base/update']" >Update</button>
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/product-spa-router-base/update', item.id]" >Update</button>
           </th>
 
       }

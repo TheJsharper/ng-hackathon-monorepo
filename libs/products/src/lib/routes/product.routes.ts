@@ -17,7 +17,7 @@ export const productRoutes: Route[] = [
 
             {
 
-                path: 'update',
+                path: 'update/:id',
                 loadComponent: () => import('../crud/update/UpdateProduct.component').then(c => c.UpdateProductComponent)
             },
             {
