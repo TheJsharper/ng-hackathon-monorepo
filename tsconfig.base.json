@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ng-hackathon-monorepo/main-shell-hackathon-apps": [
+        "libs/main-shell-hackathon-apps/src/index.ts"
+      ],
       "@ng-hackathon-monorepo/main-shell-warm-up": [
         "libs/main-shell-warm-up/src/index.ts"
       ],
