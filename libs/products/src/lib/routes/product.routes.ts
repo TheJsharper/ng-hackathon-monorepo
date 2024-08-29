@@ -22,6 +22,11 @@ export const productRoutes: Route[] = [
             },
             {
 
+                path: 'remove/:id',
+                loadComponent: () => import('../crud/remove/RemoveProduct.component').then(c => c.RemoveProductComponent)
+            },
+            {
+
                 path: 'add',
                 loadComponent: () => import('../crud/add/AddProduct.component').then(c => c.AddProductComponent)
             },

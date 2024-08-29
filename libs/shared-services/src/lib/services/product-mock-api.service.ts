@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Product } from '@ng-hackathon-monorepo/types';
 import { map, Observable, of } from 'rxjs';
 
-@Injectable(    )
+@Injectable()
 export class ProductMockApiService {
-   
-    products:Observable<Array<Product>> = of([
+
+    products: Observable<Array<Product>> = of([
         {
             id: this.getNextId(),
             code: 'f230fh0g3',
@@ -32,45 +32,52 @@ export class ProductMockApiService {
         },
     ]);
 
-    getAll():Observable<Array<Product>>{
+    getAll(): Observable<Array<Product>> {
         return this.products;
     }
 
-    getById(id:string):Observable<Product>{
+    getById(id: string): Observable<Product> {
         return this.products
-        .pipe(map((values)=> values.find((p)=> p.id ===id)?? {} ));
-
-    }
-    
-    post(product:Product):Observable<Product>{
-        const newProduct = {...product, id: this.getNextId()};
-     this.products = this.products.pipe(map((values)=>[...values, newProduct]));
-     return this.products.pipe(map((values)=>{
-        return values.find( p => p.id === newProduct.id)?? {}
-     }));   
-    }
-
-    put(id:string, product:Product):Observable<Array<Product>>{
-     this.products = this.products.pipe(map((values)=>{
-        const others = values.filter((product)=> product.id !== id);
-        return [...others, product];
-    }));
-
-    return this.products;
+            .pipe(map((values) => values.find((p) => p.id === id) ?? {}));
 
     }
 
-    delete(id:string):Observable<Array<Product>>{
-        this.products = this.products.pipe(map((values)=>{
-            const others = values.filter((product)=> product !== id);
+    post(product: Product): Observable<Product> {
+        const newProduct = { ...product, id: this.getNextId() };
+        this.products = this.products.pipe(map((values) => [...values, newProduct]));
+        return this.products.pipe(map((values) => {
+            return values.find(p => p.id === newProduct.id) ?? {}
+        }));
+    }
+
+    put(id: string, product: Product): Observable<Product> {
+        this.products = this.products.pipe(map((values) => {
+            const others = values.filter((product) => product.id !== id);
+            return [...others, product];
+        }));
+
+        return this.products.pipe(map((values) => {
+            return values.find(p => p.id === id) ?? {}
+        }));
+
+    }
+
+    delete(id: string): Observable<{id:string, status:boolean}> {
+        
+        this.products = this.products.pipe(map((values) => {
+            const others = values.filter((product) => product.id !== id);
             return [...others];
         }));
-        return this.products;
+
+        return this.products.pipe(map((values) => {
+            const found = values.find((product) => product.id === id);
+            return !found ?({id, status:true}): ({id, status:false});
+        }));
     }
 
-    private getNextId():string{
+    private getNextId(): string {
         const random_number = Math.floor(Math.random() * 777) + 1;
-        return Date.now() +random_number .toString();
+        return Date.now() + random_number.toString();
     }
-    
+
 }
