@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'lib-app-add-product',
@@ -14,7 +15,7 @@ import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
   styleUrl: './AddProduct.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnDestroy{
 
   form: FormGroup;
 
@@ -23,6 +24,8 @@ export class AddProductComponent {
   private  productServiceApiMocker: ProductMockApiService = inject(ProductMockApiService); 
 
   private router : Router = inject(Router);
+
+  private destroySignal:Subject<void> = new Subject<void>();
 
   constructor() {
     this.form = this.fb.group({
@@ -33,9 +36,14 @@ export class AddProductComponent {
       category: new FormControl('',[Validators.required]),
     });
   }
-
+  
   save(): void {
-    this.productServiceApiMocker.post(this.form.value).subscribe();
+    this.productServiceApiMocker.post(this.form.value)
+    .pipe(takeUntil(this.destroySignal))
+    .subscribe();
     this.router.navigate(['/product-spa-router-base/list']);
+  }
+  ngOnDestroy(): void {
+    this.destroySignal.unsubscribe();
   }
 }

@@ -1,21 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
 import { mergeMap, Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'lib-app-update-product',
   standalone: true,
-  imports: [
-    CommonModule, ReactiveFormsModule
-  ],
-  templateUrl: './UpdateProduct.component.html',
-  styleUrl: './UpdateProduct.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ReactiveFormsModule],
+  selector: 'lib-dulicate-product',
+  templateUrl: './DuplicateProduct.component.html'
 })
-export class UpdateProductComponent implements OnInit, OnDestroy {
+
+export class DuplicateProductComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   private fb: FormBuilder = inject(FormBuilder);
@@ -30,7 +26,6 @@ export class UpdateProductComponent implements OnInit, OnDestroy {
 
   constructor() {
     this.form = this.fb.group({
-      id: new FormControl(''),
       name: new FormControl('', [Validators.required, Validators.minLength(5)]),
       description: new FormControl('', [Validators.required, Validators.minLength(5)]),
       price: new FormControl(null, [Validators.required, Validators.min(2)]),
@@ -38,16 +33,13 @@ export class UpdateProductComponent implements OnInit, OnDestroy {
       category: new FormControl('', [Validators.required]),
     });
   }
-
   ngOnInit(): void {
-
     this.route.paramMap
       .pipe(
         takeUntil(this.destroySignal),
         mergeMap((paramters) => this.productServiceApiMocker.getById(paramters.get('id') ?? ''))
       )
       .subscribe((values) => {
-        console.log("Retrieved", values);
         this.form.get('id')?.setValue(values.id)
         this.form.get('name')?.setValue(values.name)
         this.form.get('description')?.setValue(values.description)
@@ -57,12 +49,13 @@ export class UpdateProductComponent implements OnInit, OnDestroy {
       })
   }
 
-  update(): void {
-    this.productServiceApiMocker.put(this.form.value.id, this.form.value)
+  duplicate(): void {
+    this.productServiceApiMocker.post(this.form.value)
       .pipe(takeUntil(this.destroySignal))
       .subscribe();
     this.router.navigate(['/product-spa-router-base/list']);
   }
+
   ngOnDestroy(): void {
     this.destroySignal.unsubscribe();
   }

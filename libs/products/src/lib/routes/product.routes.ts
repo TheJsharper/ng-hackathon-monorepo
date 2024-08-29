@@ -36,6 +36,11 @@ export const productRoutes: Route[] = [
                 loadComponent: () => import('../crud/add/AddProduct.component').then(c => c.AddProductComponent)
             },
             {
+
+                path: 'duplicate/:id',
+                loadComponent: () => import('../crud/duplicate/DuplicateProduct.component').then(c => c.DuplicateProductComponent)
+            },
+            {
                 path: '**',
                 redirectTo: 'list', pathMatch: 'full'
             }

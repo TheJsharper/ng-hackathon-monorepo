@@ -1,0 +1,42 @@
+<form [formGroup]="form" class="container-fluid">
+    <div class="mb-3 ">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Watch " formControlName="name" >
+      </div>
+      @if (form.get('name')?.touched && form.get('name')?.hasError('required')) {
+
+        <div class="alert alert-danger" role="alert">
+          Name is required
+        </div>
+      }
+      @if (form.get('name')?.touched && form.get('name')?.hasError('minlength')) {
+
+        <div class="alert alert-danger" role="alert">
+        Name min {{form.get('name')?.getError('minlength').requiredLength }} length
+        </div>
+      }
+      <div class="d-flex gap-3">
+        <div class="mb-3 left-margin" >
+          <label for="price" class="form-label">Price</label>
+          <input type="number" class="form-control" id="price" placeholder="420€" formControlName="price" >
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input type="number" class="form-control" id="quantity" placeholder="2" formControlName="quantity" >
+        </div>
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <input type="text" class="form-control" id="category" placeholder="laceholder" formControlName="category" >
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea  type="text" rows="5" class="form-control" id="description" placeholder="A Watch water resistence" formControlName="description"  >
+        </textarea>
+      </div>
+    
+      <div class="d-flex ">
+        <button type="button" class="btn btn-light left-margin btn-actons-size">Cancel</button>
+        <button type="button" class="btn btn-success btn-actons-size" (click)="duplicate()" [disabled]="form.invalid" >Duplicate</button>
+      </div>
+</form>
