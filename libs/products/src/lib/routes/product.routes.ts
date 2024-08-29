@@ -27,6 +27,11 @@ export const productRoutes: Route[] = [
             },
             {
 
+                path: 'details/:id',
+                loadComponent: () => import('../crud/view/ViewComponent.component').then(c => c.ViewComponentComponent)
+            },
+            {
+
                 path: 'add',
                 loadComponent: () => import('../crud/add/AddProduct.component').then(c => c.AddProductComponent)
             },
