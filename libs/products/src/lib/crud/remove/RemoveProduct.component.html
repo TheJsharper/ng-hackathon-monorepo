@@ -1,26 +1,26 @@
 <div class="container-fluid" *ngIf="product |async as p" >
     <div class="mb-3 ">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Watch " [value]="p.name">
+        <input type="text" class="form-control" id="name" placeholder="Watch " [value]="p.name" readonly disabled>
       </div>
   
       <div class="d-flex gap-3">
         <div class="mb-3 left-margin" >
           <label for="price" class="form-label">Price</label>
-          <input type="number" class="form-control" id="price" placeholder="420€" [value]="p.price">
+          <input type="number" class="form-control" id="price" placeholder="420€" [value]="p.price" readonly disabled>
         </div>
         <div class="mb-3">
           <label for="quantity" class="form-label">Quantity</label>
-          <input type="number" class="form-control" id="quantity" placeholder="2" [value]="p.quantity">
+          <input type="number" class="form-control" id="quantity" placeholder="2" [value]="p.quantity" readonly disabled>
         </div>
         <div class="mb-3">
           <label for="category" class="form-label">Category</label>
-          <input type="text" class="form-control" id="category" placeholder="laceholder" [value]="p.category">
+          <input type="text" class="form-control" id="category" placeholder="laceholder" [value]="p.category" readonly disabled>
         </div>
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea  type="text" rows="5" class="form-control" id="description" placeholder="A Watch water resistence"  [value]="p.description">
+        <textarea  type="text" rows="5" class="form-control" id="description" placeholder="A Watch water resistence"  [value]="p.description" readonly disabled>
         </textarea>
       </div>
     
