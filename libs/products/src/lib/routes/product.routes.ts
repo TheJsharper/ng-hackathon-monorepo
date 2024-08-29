@@ -1,12 +1,16 @@
+import { importProvidersFrom } from '@angular/core';
 import { Route } from '@angular/router';
-import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
+import { SharedServicesModule } from '@ng-hackathon-monorepo/shared-services';
 
 export const productRoutes: Route[] = [
     {
         path: '',
         loadComponent: () => import('../products/products.component').then(c => c.ProductsComponent),
 
-        providers:[ProductMockApiService],
+        providers:[
+            importProvidersFrom(  SharedServicesModule)
+        ],
+        
 
         children: [
             {

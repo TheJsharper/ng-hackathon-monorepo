@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnDestroy } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
+import { ProductConfigViewService, ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -15,32 +15,26 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrl: './AddProduct.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddProductComponent implements OnDestroy{
+export class AddProductComponent implements OnDestroy {
 
   form: FormGroup;
 
-  private fb: FormBuilder = inject(FormBuilder);
+  private productServiceApiMocker: ProductMockApiService = inject(ProductMockApiService);
 
-  private  productServiceApiMocker: ProductMockApiService = inject(ProductMockApiService); 
+  private productConfigView: ProductConfigViewService = inject(ProductConfigViewService);
 
-  private router : Router = inject(Router);
+  private router: Router = inject(Router);
 
-  private destroySignal:Subject<void> = new Subject<void>();
+  private destroySignal: Subject<void> = new Subject<void>();
 
   constructor() {
-    this.form = this.fb.group({
-      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      description: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      price: new FormControl(null,[Validators.required, Validators.min(2)]),
-      quantity: new FormControl(null, [Validators.required]),
-      category: new FormControl('',[Validators.required]),
-    });
+    this.form = this.productConfigView.getProductFormGroup();
   }
-  
+
   save(): void {
     this.productServiceApiMocker.post(this.form.value)
-    .pipe(takeUntil(this.destroySignal))
-    .subscribe();
+      .pipe(takeUntil(this.destroySignal))
+      .subscribe();
     this.router.navigate(['/product-spa-router-base/list']);
   }
   ngOnDestroy(): void {

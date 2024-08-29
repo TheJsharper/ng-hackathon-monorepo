@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
+import { ProductConfigViewService, ProductMockApiService } from '@ng-hackathon-monorepo/shared-services';
 import { mergeMap, Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -18,6 +18,8 @@ export class DuplicateProductComponent implements OnInit, OnDestroy {
 
   private productServiceApiMocker: ProductMockApiService = inject(ProductMockApiService);
 
+  private  productConfigView: ProductConfigViewService = inject(ProductConfigViewService); 
+
   private router: Router = inject(Router);
 
   private route: ActivatedRoute = inject(ActivatedRoute);
@@ -25,13 +27,7 @@ export class DuplicateProductComponent implements OnInit, OnDestroy {
   private destroySignal: Subject<void> = new Subject<void>();
 
   constructor() {
-    this.form = this.fb.group({
-      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      description: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      price: new FormControl(null, [Validators.required, Validators.min(2)]),
-      quantity: new FormControl(null, [Validators.required]),
-      category: new FormControl('', [Validators.required]),
-    });
+    this.form = this.productConfigView.getProductFormGroup()
   }
   ngOnInit(): void {
     this.route.paramMap
