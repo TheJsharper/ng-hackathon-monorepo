@@ -8,8 +8,8 @@ export class ProductConfigViewService {
     
     getProductFormGroup():FormGroup{
         return this.fb.group({
+            id: new FormControl(''),
             name: new FormControl('', [Validators.required, Validators.minLength(5)]),
-
             description: new FormControl('', [Validators.required, Validators.minLength(5)]),
             price: new FormControl(null,[Validators.required, Validators.min(2)]),
             quantity: new FormControl(null, [Validators.required]),
