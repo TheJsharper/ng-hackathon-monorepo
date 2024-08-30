@@ -1,0 +1,15 @@
+:host {
+  .main-shell-warm-up {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .main-shell-header {
+      display: flex;
+      flex: 0 0 100px;
+      position: sticky;
+      top: 0px;
+      justify-content: flex-start;
+    }
+  }
+}

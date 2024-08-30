@@ -1,33 +1,24 @@
-:host{
-    .main-shell-warm-up{
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        .main-shell-header {
-          display: flex;
-          flex: 0 0 100px;
-          position: sticky;
-          top: 0px;
-          justify-content: flex-start;
-        }
-        .main-shell-container {
-          display: flex;
-          flex: 0 0 calc(100dvh - 100px);
-          top: 100px;
-          overflow: hidden;
-          .main-shell-sider-bar{
-            display: flex;
-            flex-direction: column;
-            flex: 0 0 300px;
-            overflow: auto;
-         
-          }
-          .main-shell-content{
-            display: flex;
-            flex-direction: column;
-            flex: 0 0 calc(100% - 300px);
-            overflow: auto;
-          }
-        }
-      }
+:host {
+
+  .main-shell-container {
+    display: flex;
+    flex: 0 0 calc(100dvh - 100px);
+    top: 100px;
+    overflow: hidden;
+
+    .main-shell-sider-bar {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 300px;
+      overflow: auto;
+
+    }
+
+    .main-shell-content {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 calc(100% - 300px);
+      overflow: auto;
+    }
+  }
 }

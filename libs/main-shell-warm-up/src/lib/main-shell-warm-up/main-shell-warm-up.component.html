@@ -1,32 +1,21 @@
-<div class="main-shell-warm-up">
-    <div class="main-shell-header">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-              <h1>NG-Hackathon</h1>
-          
-          </a>
-        </div>
-      </nav>
-    </div>
-    <div class="main-shell-container">
-  
-      <div class="main-shell-sider-bar">
-        <ul class="list-group">
-          
+<div class="main-shell-container">
 
-            <a href="#" class="list-group-item list-group-item-action " [routerLinkActive]="['active']" [routerLink]="['/product-spa-router-base/list']"
-            [routerLinkActiveOptions]="{ exact: true }">
-            
-                Product
-              </a>
-              <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="['active']" [routerLink]="['/product-spa-router-base-1']" >A second link item</a>
-              <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="['active']" [routerLink]="['/product-spa-router-base-2']">A third link item</a>
-        </ul>
-        </div>
-      <div class="main-shell-content">  
-            <router-outlet />
-      </div>
-    </div>
-  
+  <div class="main-shell-sider-bar">
+    <ul class="list-group">
+
+
+      <a href="#" class="list-group-item list-group-item-action " [routerLinkActive]="['active']"
+        [routerLink]="['/product-spa-router-base/list']" [routerLinkActiveOptions]="{ exact: true }">
+
+        Product
+      </a>
+      <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="['active']"
+        [routerLink]="['/product-spa-router-base-1']">A second link item</a>
+      <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="['active']"
+        [routerLink]="['/product-spa-router-base-2']">A third link item</a>
+    </ul>
   </div>
+  <div class="main-shell-content">
+    <router-outlet />
+  </div>
+</div>
