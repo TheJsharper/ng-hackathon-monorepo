@@ -16,18 +16,18 @@ export const warmUpRoutes: Route[] = [
                 loadChildren: () => import('@ng-hackathon-monorepo/products').then(p => p.productRoutes)
 
             },
-            {
+            /*{
                 path: '',
-                redirectTo: 'product-spa-router-base', pathMatch: 'full'
+                redirectTo: 'product-spa-router-base', pathMatch: 'prefix'
             }
             ,
             {
                 path: '**',
-                redirectTo: 'product-spa-router-base', pathMatch: 'full'
-            }
+                redirectTo: 'product-spa-router-base', pathMatch: 'prefix'
+            }*/
         ]
     },
-    {
+  /*  {
         path: '',
         redirectTo: 'product-spa-router-base/list', pathMatch: 'full'
     }
@@ -35,5 +35,5 @@ export const warmUpRoutes: Route[] = [
     {
         path: '**',
         redirectTo: 'product-spa-router-base/list', pathMatch: 'full'
-    }
+    }*/
 ];

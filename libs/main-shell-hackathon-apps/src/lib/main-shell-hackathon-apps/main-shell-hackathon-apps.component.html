@@ -1,1 +1,21 @@
-<p>main-shell-hackathon-apps works!</p>
+<div class="main-shell-container">
+
+    <div class="main-shell-sider-bar">
+      <ul class="list-group">
+  
+  
+        <a  class="list-group-item list-group-item-action " [routerLinkActive]="['active']"
+          [routerLink]="['/app-list/step-00']" [routerLinkActiveOptions]="{ exact: true }">
+  
+          Step-00
+        </a>
+        <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="['active']"
+          [routerLink]="['/product-spa-router-base-1']">Step-01</a>
+        <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="['active']"
+          [routerLink]="['/product-spa-router-base-2']">Step-02</a>
+      </ul>
+    </div>
+    <div class="main-shell-content">
+      <router-outlet />
+    </div>
+  </div>

@@ -6,7 +6,11 @@ export const appRoutes: Route[] = [
          loadChildren : ()=> import('@ng-hackathon-monorepo/main-shell-warm-up').then( c=> c.warmUpRoutes)
     },
     {
-        path:'',
+        path:'app-list',
+         loadChildren : ()=> import('@ng-hackathon-monorepo/main-shell-hackathon-apps').then( c=> c.hackathonRouteLIst)
+    },
+    {
+        path:'app-list',
         redirectTo:'/', pathMatch: 'full'
     }
 ];

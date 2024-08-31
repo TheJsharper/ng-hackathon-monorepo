@@ -25,6 +25,7 @@
       "@ng-hackathon-monorepo/shared-services": [
         "libs/shared-services/src/index.ts"
       ],
+      "@ng-hackathon-monorepo/step-00": ["libs/step-00/src/index.ts"],
       "@ng-hackathon-monorepo/types": ["libs/types/src/index.ts"]
     }
   },
